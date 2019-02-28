@@ -40,37 +40,183 @@ class Xor0(var size: Int) {
     }
 
     fun longestXSequence(): Int{
-        var count = 0
+        var count: Int
         var longestSequence = 0
-        for (i in 0 until size)
-            for(k in 0 until size){
-                if (array[i][k] == "X"){
-                    for (y in i..0)
-                        if (array[y][k] == "X")
-                            count++
-                    else break
+        for (y in 0 until size) {
+            count = 0
+            for (x in 0 until size) {   //looking for X horizontal
+                if (array[y][x] == "X")
+                    count++
+                else {
                     if (count > longestSequence) longestSequence = count
                     count = 0
-                    for (y in i until size)
-                        if (array[y][k] == "X")
-                            count++
-                        else break
-                    if (count > longestSequence) longestSequence = count
-                    count = 0
-                    for (y in k..0)
-                        if (array[i][y] == "X")
-                            count++
-                        else break
-                    if (count > longestSequence) longestSequence = count
-                    count = 0
-                    for (y in k until size)
-                        if (array[i][y] == "X")
-                            count++
-                        else break
+                }
+                if (count > longestSequence) longestSequence = count
+            }
+        }
+        for (x in 0 until size) {   //looking for X vertical
+            count = 0
+            for (y in 0 until size) {
+                if (array[y][x] == "X")
+                    count++
+                else {
                     if (count > longestSequence) longestSequence = count
                     count = 0
                 }
             }
+            if (count > longestSequence) longestSequence = count
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = i
+            var y = 0
+            while ((x < size) && (y < size)){
+                if (array[y][x] == "X") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x++
+                y++
+            }
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = 0
+            var y = i
+            while ((x < size) && (y < size)){
+                if (array[y][x] == "X") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x++
+                y++
+            }
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = i
+            var y = 0
+            while ((x > -1) && (y < size)){
+                if (array[y][x] == "X") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x--
+                y++
+            }
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = 3
+            var y = i
+            while ((x > -1) && (y < size)){
+                if (array[y][x] == "X") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x--
+                y++
+            }
+        }
+        return longestSequence
+    }
+
+    fun longest0Sequence(): Int{
+        var count: Int
+        var longestSequence = 0
+        for (y in 0 until size) {
+            count = 0
+            for (x in 0 until size) {   //looking for X horizontal
+                if (array[y][x] == "0")
+                    count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+            }
+        }
+        for (x in 0 until size) {   //looking for X vertical
+            count = 0
+            for (y in 0 until size) {
+                if (array[y][x] == "0")
+                    count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+            }
+            if (count > longestSequence) longestSequence = count
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = i
+            var y = 0
+            while ((x < size) && (y < size)){
+                if (array[y][x] == "0") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x++
+                y++
+            }
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = 0
+            var y = i
+            while ((x < size) && (y < size)){
+                if (array[y][x] == "0") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x++
+                y++
+            }
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = i
+            var y = 0
+            while ((x > -1) && (y < size)){
+                if (array[y][x] == "0") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x--
+                y++
+            }
+        }
+        for (i in 0 until size) {
+            count = 0
+            var x = 3
+            var y = i
+            while ((x > -1) && (y < size)){
+                if (array[y][x] == "0") count++
+                else {
+                    if (count > longestSequence) longestSequence = count
+                    count = 0
+                }
+                if (count > longestSequence) longestSequence = count
+                x--
+                y++
+            }
+        }
         return longestSequence
     }
 }
+
