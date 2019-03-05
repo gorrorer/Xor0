@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_PARAMETER", "unused")
 
-package Xor0
+package x_or_0
 
 import java.lang.IllegalArgumentException
 
@@ -20,7 +20,7 @@ class Xor0(var size: Int) {
         else throw IllegalArgumentException()
     }
 
-    fun clear(x: Int, y: Int){
+    fun clearCell(x: Int, y: Int){
         if ((x>=1) && (x<=size) && (y>=1) && (y<=size))
             array[size-y][x - 1] = " "
         else throw IllegalArgumentException()
@@ -66,7 +66,7 @@ class Xor0(var size: Int) {
             }
             if (count > longestSequence) longestSequence = count
         }
-        for (i in 0 until size) {
+        for (i in 0 until size) {       //looking for X diagonally
             count = 0
             var x = i
             var y = 0
@@ -81,7 +81,7 @@ class Xor0(var size: Int) {
                 y++
             }
         }
-        for (i in 0 until size) {
+        for (i in 0 until size-1) {
             count = 0
             var x = 0
             var y = i
@@ -111,7 +111,7 @@ class Xor0(var size: Int) {
                 y++
             }
         }
-        for (i in 0 until size) {
+        for (i in 0 until size-1) {
             count = 0
             var x = 3
             var y = i
@@ -171,7 +171,7 @@ class Xor0(var size: Int) {
                 y++
             }
         }
-        for (i in 0 until size) {
+        for (i in 0 until size-1) {
             count = 0
             var x = 0
             var y = i
@@ -201,7 +201,7 @@ class Xor0(var size: Int) {
                 y++
             }
         }
-        for (i in 0 until size) {
+        for (i in 0 until size-1) {
             count = 0
             var x = 3
             var y = i
