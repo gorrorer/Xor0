@@ -1,32 +1,40 @@
 @file:Suppress("UNUSED_PARAMETER", "unused")
 
+
 package x_or_0
 
-import java.lang.IllegalArgumentException
 
-class Xor0(var size: Int) {
+class Xor0(private var size: Int) {
+
 
     private val array = MutableList(size) { MutableList(size) { " " } }
 
-    fun setX(x: Int, y: Int){
-        if ((x>=1) && (x<=size) && (y>=1) && (y<=size))
+
+    fun setX(x: Int, y: Int): Boolean{
+        return if ((x>=1) && (x<=size) && (y>=1) && (y<=size)) {
             array[size-y][x - 1] = "X"
-        else throw IllegalArgumentException()
+            true
+        } else false
     }
 
-    fun set0(x: Int, y: Int){
-        if ((x>=1) && (x<=size) && (y>=1) && (y<=size))
+
+    fun set0(x: Int, y: Int): Boolean{
+        return if ((x>=1) && (x<=size) && (y>=1) && (y<=size)) {
             array[size-y][x - 1] = "0"
-        else throw IllegalArgumentException()
+            true
+        } else false
     }
 
-    fun clearCell(x: Int, y: Int){
-        if ((x>=1) && (x<=size) && (y>=1) && (y<=size))
+
+    fun clearCell(x: Int, y: Int): Boolean{
+        return if ((x>=1) && (x<=size) && (y>=1) && (y<=size)) {
             array[size-y][x - 1] = " "
-        else throw IllegalArgumentException()
+            true
+        } else false
     }
 
-    fun printField(){
+
+    fun printField(){           //unnecessary function just for my own convenience
         println(" " + array[0].joinToString(separator = " ║ ") + " ")
         for (i in 1 until size){
             for(k in 0 until size - 1) {
@@ -38,6 +46,7 @@ class Xor0(var size: Int) {
         }
 
     }
+
 
     fun longestXSequence(): Int{
         var count: Int
@@ -128,6 +137,7 @@ class Xor0(var size: Int) {
         }
         return longestSequence
     }
+
 
     fun longest0Sequence(): Int{
         var count: Int

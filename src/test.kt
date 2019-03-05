@@ -1,7 +1,7 @@
 
 import x_or_0.Xor0
 
-fun main(){
+fun main(){                     // this fun is just for elementary tests
     val test = Xor0(4)
     test.setX(1,1)
     test.setX(2,2)
